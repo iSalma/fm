@@ -38,13 +38,13 @@ function displayData() {
 
     for (let i = 0; i < allData.length; i++) {
         temp += `
-        <div class="col-md-4">
+        <div>
           <div class="item">
             <h1>`+ allData[i].name + `</h1>
-            <img src="`+ allData[i].category_img + `" class="img-fluid"/>
+            <img src="`+ allData[i].category_img + `" />
             <h3>Products</h3>
             <h4>Name:`+ allData[i].products[i].name + `</h4>
-            <img src="`+ allData[i].products[i].product_img + `" class="img-fluid"/>
+            <img src="`+ allData[i].products[i].product_img + `"/>
             <h4>Weight:`+ allData[i].products[i].weight + `</h4>
             <h4>Price:`+ allData[i].products[i].price + `</h4>
           </div>
@@ -61,13 +61,13 @@ jQ("#categoryBtn button").click(function () {
     for (let i = 0; i < allData.length; i++) {
         if (allData[i].name == `${category}`) {
             temp += `
-            <div class="col-md-4">
+            <div >
             <div class="item">
                 <h1>`+ allData[i].name + `</h1>
-                <img src="`+ allData[i].category_img + `" class="img-fluid"/>
+                <img src="`+ allData[i].category_img + `"/>
                 <h3>Products</h3>
                 <h4>Name:`+ allData[i].products[i].name + `</h4>
-                <img src="`+ allData[i].products[i].product_img + `" class="img-fluid"/>
+                <img src="`+ allData[i].products[i].product_img + `" />
                 <h4>Weight:`+ allData[i].products[i].weight + `</h4>
                 <h4>Price:`+ allData[i].products[i].price + `</h4>
             </div>
