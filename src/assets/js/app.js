@@ -16,7 +16,7 @@ function getData() {
 
             allData = JSON.parse(httpReq.response) 
             displayData();
-            console.log(allData)
+            console.log(allData[0].products.length)
         }
     }
 }
@@ -26,17 +26,22 @@ function displayData() {
 
     for (let i = 0; i < allData.length; i++) {
         temp += `
-        <div>
-          <div class="item">
-            <h1>`+ allData[i].name + `</h1>
-            <img src="`+ allData[i].category_img + `" />
-            <h3>Products</h3>
-            <h4>Name:`+ allData[i].products[i].name + `</h4>
-            <img src="`+ allData[i].products[i].product_img + `"/>
-            <h4>Weight:`+ allData[i].products[i].weight + `</h4>
-            <h4>Price:`+ allData[i].products[i].price + `</h4>
-          </div>
-        </div>`;
+            <div>
+              <div class="item">
+                <h1>`+ allData[i].name + `</h1>
+                <img src="`+ allData[i].category_img + `" />
+                <h3>Products</h3>`;
+        for (let j=0; j< allData[i].products.length; j++) {
+             temp+=`
+             <div>
+                <h4>Name:`+ allData[i].products[j].name + `</h4>
+                <img src="`+ allData[i].products[j].product_img + `"/>
+                <h4>Weight:`+ allData[i].products[j].weight + `</h4>
+                <h4>Price:`+ allData[i].products[j].price + `</h4>
+                </div>
+              </div>
+            </div>`;
+        }
     }
 
     document.getElementById("rowData").innerHTML = temp;
@@ -50,20 +55,26 @@ jQ("#categoryBtn button").click(function () {
         if (allData[i].name == `${category}`) {
             temp += `
             <div >
-            <div class="item">
+              <div class="item">
                 <h1>`+ allData[i].name + `</h1>
-                <img src="`+ allData[i].category_img + `"/>
+                <img src="`+ allData[i].category_img + `" />
                 <h3>Products</h3>
-                <h4>Name:`+ allData[i].products[i].name + `</h4>
-                <img src="`+ allData[i].products[i].product_img + `" />
-                <h4>Weight:`+ allData[i].products[i].weight + `</h4>
-                <h4>Price:`+ allData[i].products[i].price + `</h4>
-            </div>
-            </div>`;
+                </div>`;
+        for (let j=0; j< allData[i].products.length; j++) {
+             temp+=`
+             <div >
+                <h4>Name:`+ allData[i].products[j].name + `</h4>
+                <img src="`+ allData[i].products[j].product_img + `"/>
+                <h4>Weight:`+ allData[i].products[j].weight + `</h4>
+                <h4>Price:`+ allData[i].products[j].price + `</h4>
+              </div>
+              </div>
+            `;
         }
-     
+        }
+
     }
-    document.getElementById("rowData").innerHTML = temp; 
+    document.getElementById("rowData").innerHTML = temp;
 })
 
 jQ("#categoryBtn #allSection").click(function () {
