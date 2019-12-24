@@ -1,38 +1,26 @@
 //js
 
-let jQ= $.noConflict();
+let jQ = $.noConflict();
 
 var allData = [];
 var httpReq = new XMLHttpRequest();
-var category = "general";
-getData(category);
-
-var links = document.querySelectorAll(".nav-link");
-
-for (var i = 0; i < links.length; i++) {
-    links[i].addEventListener("click", function (e) {
-        category = e.target.text;
-        getData(category);
-
-    })
-}
+getData();
 
 
-function getData(category) {
+function getData() {
 
     httpReq.open("GET", "https://5bcce576cf2e850013874767.mockapi.io/task/categories")
-    // httpReq.open("GET",  "https://newsapi.org/v2/top-headlines?country=us&category="+category+"&apiKey=31cf74b9d55a4b6780e02b8c74a4cf61" ) // hatft7 tari2 bena w ben eltanyeen
-    httpReq.send(); // hatb3t 3arbia nos na2l t7ml eldata
+    httpReq.send(); 
     httpReq.onreadystatechange = function () {
         if (httpReq.readyState == 4 && httpReq.status == 200) {
 
-            allData = JSON.parse(httpReq.response) // di hat4il eldata ely rag3a
+            allData = JSON.parse(httpReq.response) 
             displayData();
+            console.log(allData)
         }
     }
-
-
 }
+
 function displayData() {
     let temp = ``;
 
